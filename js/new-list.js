@@ -28,30 +28,25 @@ $('.fa-bars').on("click", function() {
 
 
 // Code for the Add New List Button
-function AddNewList() {
+
 $addNewListButton.on("click", function () {
   
-  // listDiv.style.display = 'block';
   $('.list-section').slideDown(500).show();
-  $('.list-header i.fa-plus').remove();
+  $('.list-header i.fa-plus').hide();
   $('.fa-minus').show();
   $('ul.list').text('');
   
 }); // end event handler
-}; // end function
-AddNewList();
+
 
 // Code for the Delete List Button
 
 $('.fa-minus').on("click", function () {
   
-  // listDiv.style.display = 'none';
-  $('.list-section').slideUp(500);
-  $('.list-header i.fa-minus').remove();
-  let addButton = document.createElement('i');
-  addButton.className = "fa-plus";
-  listDiv.appendChild(addButton);
-
+  $('.list-section').slideUp().hide(500);
+  $('i.fa-minus').hide();
+  $('.fa-plus').show();
+  
   
 
 }); // end event handler
@@ -83,13 +78,19 @@ addToListButton.addEventListener('click', () => {
 
 });
 
-itemEntry.addEventListener("keydown", checkKeyPressed,);
+itemEntry.addEventListener("keydown", checkKeyPressed);
 
 function checkKeyPressed(evt) {
   if (evt.keyCode == "13") {
     let li = document.createElement('li');
     li.textContent = itemEntry.value;
     list.appendChild(li);
+
+    let itemMarker = document.createElement('button');
+    itemMarker.className = 'markItemButton';
+    itemMarker.innerHTML = `<i class="fas fa-cart-arrow-down"></i>`;
+    li.appendChild(itemMarker);
+    
     let itemRemoval = document.createElement('button');
     itemRemoval.className = 'removeItemButton';
     itemRemoval.innerHTML = `<i class="fas fa-trash"></i>`;
@@ -101,16 +102,14 @@ function checkKeyPressed(evt) {
 // Code for mark Item Button - whichever markItemButton is clicked, its parent list item should be marked through to indicate it being scratched off of a list.
 
 list.addEventListener('click', (event) => {
-  if (event.target.className == 'markItemButton') {
+  if (event.target.className == 'markItemButton' || event.target.className == 'itemMarker') {
     let li = event.target.parentNode;
     
-      if (li.style.textDecoration == 'none') {
-        li.style.textDecoration = 'line-through';
-        li.style.color = "#53f1a2";
-        }else {
-            li.style.textDecoration = 'none';
-            li.style.color = "#626262";
-        }
+    if (li.className == 'marked') {
+      li.className -= 'marked';
+      } else {
+        li.className += 'marked';
+      }
     
 }}) // end event handler
 

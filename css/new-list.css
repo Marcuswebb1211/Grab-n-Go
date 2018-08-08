@@ -156,12 +156,12 @@ p.instructions {
 
 .list-section {
   display: none;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 10px;
   background-color: #fff;
 /*  border-radius: 7px;*/
 /*  border: 1px solid #626262;*/
-  min-height: 400px; }
+  min-height: 300px; }
 
 .titleEntry {
   width: 100%;

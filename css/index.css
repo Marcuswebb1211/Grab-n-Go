@@ -102,6 +102,13 @@ nav ul li:hover {
   background-color: #fff;
 }
 
+.addNew:hover .fa-plus {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 .status-box {
   width: 80%;
   font-size: .7em;
@@ -111,11 +118,12 @@ nav ul li:hover {
 .addNew i {
   margin-left: auto;
   color: #e6812a;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .addNew i:hover {
   color:  #e0cf4a;
+  
 }
 
 /* The Modal (background) */
@@ -224,6 +232,25 @@ nav ul li:hover {
   cursor: pointer;
 }
 
+/* Keyframes*/
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 
 /* Media Queries*/
 
